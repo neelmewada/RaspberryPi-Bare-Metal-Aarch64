@@ -1,0 +1,78 @@
+#pragma once
+
+#define ALIGN_128BIT_MASK     0xFFFFFF80
+#define GPU_RAM_START_ADDR    0x80000000
+
+// GL PIPELINE
+
+// Primitive types in GL Pipeline 
+typedef enum {
+	PRIM_POINT = 0,
+	PRIM_LINE = 1,
+	PRIM_LINE_LOOP = 2,
+	PRIM_LINE_STRIP = 3,
+	PRIM_TRIANGLE = 4,
+	PRIM_TRIANGLE_STRIP = 5,
+	PRIM_TRIANGLE_FAN = 6,
+} PRIMITIVE;
+
+// GL pipeline control commands
+typedef enum {
+	GL_HALT = 0,
+	GL_NOP = 1,
+	GL_FLUSH = 4,
+	GL_FLUSH_ALL_STATE = 5,
+	GL_START_TILE_BINNING = 6,
+	GL_INCREMENT_SEMAPHORE = 7,
+	GL_WAIT_ON_SEMAPHORE = 8,
+	GL_BRANCH = 16,
+	GL_BRANCH_TO_SUBLIST = 17,
+	GL_RETURN_FROM_SUBLIST = 18,
+	GL_STORE_MULTISAMPLE = 24,
+	GL_STORE_MULTISAMPLE_END = 25,
+	GL_STORE_FULL_TILE_BUFFER = 26,
+	GL_RELOAD_FULL_TILE_BUFFER = 27,
+	GL_STORE_TILE_BUFFER = 28,
+	GL_LOAD_TILE_BUFFER = 29,
+	GL_INDEXED_PRIMITIVE_LIST = 32,
+	GL_VERTEX_ARRAY_PRIMITIVES = 33,
+	GL_VG_COORDINATE_ARRAY_PRIMITIVES = 41,
+	GL_COMPRESSED_PRIMITIVE_LIST = 48,
+	GL_CLIP_COMPRESSD_PRIMITIVE_LIST = 49,
+	GL_PRIMITIVE_LIST_FORMAT = 56,
+	GL_SHADER_STATE = 64,
+	GL_NV_SHADER_STATE = 65,
+	GL_VG_SHADER_STATE = 66,
+	GL_VG_INLINE_SHADER_RECORD = 67,
+	GL_CONFIG_STATE = 96,
+	GL_FLAT_SHADE_FLAGS = 97,
+	GL_POINTS_SIZE = 98,
+	GL_LINE_WIDTH = 99,
+	GL_RHT_X_BOUNDARY = 100,
+	GL_DEPTH_OFFSET = 101,
+	GL_CLIP_WINDOW = 102,
+	GL_VIEWPORT_OFFSET = 103,
+	GL_Z_CLIPPING_PLANES = 104,
+	GL_CLIPPER_XY_SCALING = 105,
+	GL_CLIPPER_Z_ZSCALE_OFFSET = 106, 
+	GL_TILE_BINNING_CONFIG = 112,
+	GL_TILE_RENDER_CONFIG = 113,
+	GL_CLEAR_COLORS = 114,
+	GL_TILE_COORDINATES = 115
+}  GL_CONTROL;
+
+
+typedef enum {
+    MEM_FLAG_DISCARDABLE = 1 << 0,									/* can be resized to 0 at any time. Use for cached data */
+    MEM_FLAG_NORMAL = 0 << 2,										/* normal allocating alias. Don't use from ARM			*/
+    MEM_FLAG_DIRECT = 1 << 2,										/* 0xC alias uncached									*/
+    MEM_FLAG_COHERENT = 2 << 2,										/* 0x8 alias. Non-allocating in L2 but coherent			*/
+    MEM_FLAG_L1_NONALLOCATING = (MEM_FLAG_DIRECT | MEM_FLAG_COHERENT), /* Allocating in L2									*/
+    MEM_FLAG_ZERO = 1 << 4,											/* initialise buffer to all zeros						*/
+    MEM_FLAG_NO_INIT = 1 << 5,										/* don't initialise (default is initialise to all ones	*/
+    MEM_FLAG_HINT_PERMALOCK = 1 << 6,								/* Likely to be locked for long periods of time.		*/
+} V3D_MEMALLOC_FLAGS;
+
+
+
+
