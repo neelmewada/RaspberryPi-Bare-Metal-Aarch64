@@ -1,3 +1,8 @@
+/* 
+*  Copyright (C) 2021 Neel Mewada - All Rights Reserved
+*/
+
+
 #include "common.h"
 #include "utils.h"
 #include "io/uart.h"
