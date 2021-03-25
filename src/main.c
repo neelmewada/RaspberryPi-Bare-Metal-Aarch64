@@ -67,16 +67,13 @@ void kernel_main() {
     fb_init(1280, 720);
 
     // display an ASCII string on screen with PSF
-    fb_print(0, 0, "Hello World:  0");
-
-    // display a UTF-8 string on screen with SSFN
-    fb_proprint(0, 40, "Hello 多种语言 Многоязычный többnyelvű World!");
+    fb_print(0, 0, "Hello World! This is HDMI Output from Raspberry PI");
 
     irq_enable();
 
     u32 clk_rate_final = mbox_set_clock_rate(MBOX_CLOCK_ID_V3D, 250*1000*1000, 0); // set v3d clock 250 MHz
     u8 qpu_status = mbox_set_qpu(1); // enable qpu
-    /*
+    
     int res = copy_process((u64)&process, (u64)"12345");
     if (res != 0) {
         printf("Error while starting process 1\n");
@@ -87,7 +84,7 @@ void kernel_main() {
     if (res != 0) {
         printf("Error while starting process 2\n");
         return;
-    }*/
+    }
 
     while(1) {
         // infinite loop
