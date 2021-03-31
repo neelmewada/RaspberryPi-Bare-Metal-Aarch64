@@ -7,6 +7,6 @@ The goal of this project is just to demonstrate how to write a basic Operating S
 
 - **Memory Management**: Paging techniques, Memory allocation, etc.
 - **Process Scheduling**: Preemptive Process Scheduling algorithm based on Priority
-- **Basic IO**: Communication over UART, Display video output via HDMI
+- **Basic IO**: Communication over UART, Display video output via HDMI, etc.
 - **Interrupts & Exceptions**: Added interrupt handlers for supported ARM64 interrupts.
 - **Graphics**: Ability to draw text on the HDMI output
